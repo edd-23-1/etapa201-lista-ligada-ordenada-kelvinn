@@ -17,7 +17,7 @@ class ListaLigada:
     # retorna True se a lista ligada está vazia, False caso contrário
     def is_empty(self) -> bool:
         # implementação do método
-        pass
+        return self.__inicio is None
 
     
     # retorna True se a lista ligada está cheia, False caso contrário

@@ -30,7 +30,32 @@ class ListaLigada:
     # se a lista ligada estiver cheia, lança uma exceção: raise Exception("mensagem de erro")
     def add(self, valor) -> bool:
         # implementação do método
-        pass
+        if self.is_full():
+            raise Exception("Lista ligada cheia")
+        
+        novoNo = No(valor)
+
+        if self.is_empty():
+            self.__inicio = novoNo
+
+        else:
+            noAtual = self.__inicio
+            noAnterior = None
+            
+            while noAtual is not None and noAtual.dado < valor:
+                noAnterior = noAtual
+                noAtual = noAtual.prox
+            
+            if noAnterior is None:
+                novoNo.prox = self.__inicio
+                self.__inicio = novoNo
+            
+            else:
+                noAnterior.prox = novoNo
+                novoNo.prox = noAtual
+
+        self.__qtdItens += 1
+        return True
 
     
     # remove um elemento da lista ligada retornando True caso ele seja removido

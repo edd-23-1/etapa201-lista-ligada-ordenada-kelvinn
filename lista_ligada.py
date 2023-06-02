@@ -64,7 +64,7 @@ class ListaLigada:
     def remove(self, valor) -> bool:
         # implementação do método
         if self.is_empty():
-            raise Exception("A lista ligada está vazia.")
+            raise Exception("Lista ligada vazia")
 
         if self.__inicio.dado == valor:
             self.__inicio = self.__inicio.prox
@@ -109,7 +109,17 @@ class ListaLigada:
     # que a lista ligada está vazia e retorna uma lista vazia
     def display(self) -> list[str]:
         # implementação do método
-        pass
+        if self.is_empty():
+            print("Lista ligada vazia")
+            return []
+
+        valores = []
+        noAtual = self.__inicio
+        while noAtual is not None:
+            valores.append(noAtual.dado)
+            noAtual = noAtual.prox
+
+        return valores
     
 
     # retorna a quantidade de elementos na lista ligada

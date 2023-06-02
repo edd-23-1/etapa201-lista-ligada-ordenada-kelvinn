@@ -63,8 +63,27 @@ class ListaLigada:
     # se a lista ligada estiver vazia, lança uma exceção: raise Exception("mensagem de erro")
     def remove(self, valor) -> bool:
         # implementação do método
-        pass
+        if self.is_empty():
+            raise Exception("A lista ligada está vazia.")
 
+        if self.__inicio.dado == valor:
+            self.__inicio = self.__inicio.prox
+            self.__qtdItens -= 1
+            return True
+
+        noAtual = self.__inicio
+        noAnterior = None
+
+        while noAtual is not None and noAtual.dado != valor:
+            noAnterior = noAtual
+            noAtual = noAtual.prox
+
+        if noAtual is None:
+            return False
+
+        noAnterior.prox = noAtual.prox
+        self.__qtdItens -= 1
+        return True
 
     # retornar True caso o elemento esteja presente na lista ligada
     # ou False caso contrário
